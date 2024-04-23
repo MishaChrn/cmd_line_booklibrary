@@ -1,18 +1,19 @@
 import os
-
+#search_books function is added.
+#menu1-4 are re-tested.
 
 def add_book(title, genre, author):
     with open("books.txt", "a") as file:
-        file.write(title + "/" + genre + "/" + author + "\n")
+        file.write(title + " / " + genre + " / " + author + "\n")
     print("本を追加しました\n")
 
-def search_books():
+def search_books(search_word):
     if os.path.exists("books.txt"):
         with open("books.txt", "r") as file:
             books = file.readlines()
-            for index, book in enumerate(books, start=1):#Back to here later.
-                if search_word in books:
-                    print(f"{book.strip()}\n")
+    search_result = [books for books in books if search_word in books]
+    for books in search_result:
+        print("\n" + books)
 
 def list_books():
     if os.path.exists("books.txt"):
@@ -34,7 +35,7 @@ def main():
         choice = int(input("使いたい機能の数字を入力してください: "))
         
         if choice == 1:
-            print("\n本を追加: 本の情報を追加してください")
+            print("\n本を追加: 本の情報を追加してください")#Want to add 'back to menu' button
             title = input("タイトル: ")
             genre = input("ジャンル: ")
             author = input("著者: ")
@@ -42,8 +43,8 @@ def main():
             
         elif choice == 2:
             print("\n本を検索: 追加した本の検索ができます")
-            search_word = input("タイトル、ジャンル、著者のいずれかを入力してください: ")
-            search_books(search_word)#Back to here later.
+            search_word = input("タイトル、ジャンル、著者のいずれかを入力してください: ")#Want to enable multi-word search
+            search_books(search_word)
             
         elif choice == 3:
             print("\n本をすべて表示: 追加した本をすべて表示します")
@@ -52,8 +53,6 @@ def main():
         else:
             choice == 4
             print("蔵書キーパーを終了しました")
-
-#This is a test comment for the purpose of verifying commit.
 
 if __name__ == "__main__":
     main()
