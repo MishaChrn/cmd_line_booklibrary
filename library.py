@@ -52,7 +52,9 @@ def main():
         else:
             choice == 4
             print("蔵書キーパーを終了しました")
+
 #This is a test comment for the purpose of verifying commit.
+
 if __name__ == "__main__":
     main()
 
