@@ -11,7 +11,7 @@ def search_books(search_word):
     if os.path.exists("books.txt"):
         with open("books.txt", "r") as file:
             books = file.readlines()
-    search_result = [books for books in books if search_word in books]
+    search_result = [books for books in books if search_word in books]#I don't understand why this works
     for books in search_result:
         print("\n" + books)
 
@@ -43,6 +43,7 @@ def main():
             
         elif choice == 2:
             print("\n本を検索: 追加した本の検索ができます")
+            #search_word = input("タイトル、ジャンル、著者のいずれかを入力してください: ").split()#Input texts are stored as a list
             search_word = input("タイトル、ジャンル、著者のいずれかを入力してください: ")#Want to enable multi-word search
             search_books(search_word)
             
